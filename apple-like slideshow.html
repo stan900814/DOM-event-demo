@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <title>苹果风格轮播</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        #main {
+            position: relative;
+            width: 920px;
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        #window {
+            width: 900px;
+            overflow: hidden;
+        }
+
+        #images {
+            display: flex;
+            align-items: flex-start;
+            width: 100%;
+            transition: all 0.5s;
+        }
+
+        #slideButtons {
+            display: table;
+            position: relative;
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        .slideButtons {
+            display: block;
+            float: left;
+            width: 90px;
+            height: 45px;
+            background-color: #f2f2f2;
+        }
+
+        #slideButtons::after {
+            display: block;
+            content: '';
+            clear: both;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <div id="window">
+            <div id="images" class="images">
+                <img src="https://demo.tutorialzine.com/2009/11/beautiful-apple-gallery-slideshow/img/sample_slides/macbook.jpg"
+                    alt="">
+                <img src="https://demo.tutorialzine.com/2009/11/beautiful-apple-gallery-slideshow/img/sample_slides/iphone.jpg"
+                    alt="">
+                <img src="https://demo.tutorialzine.com/2009/11/beautiful-apple-gallery-slideshow/img/sample_slides/imac.jpg"
+                    alt="">
+                <img src="https://demo.tutorialzine.com/2009/11/beautiful-apple-gallery-slideshow/img/sample_slides/info.jpg"
+                    alt="">
+            </div>
+        </div>
+        <ul id="slideButtons">
+            <li class="slideButtons"><img
+                    src="https://demo.tutorialzine.com/2009/11/beautiful-apple-gallery-slideshow/img/sample_slides/thumb_macbook.png"
+                    alt=""></li>
+            <li class="slideButtons"><img
+                    src="https://demo.tutorialzine.com/2009/11/beautiful-apple-gallery-slideshow/img/sample_slides/thumb_iphone.png"
+                    alt=""></li>
+            <li class="slideButtons"><img
+                    src="https://demo.tutorialzine.com/2009/11/beautiful-apple-gallery-slideshow/img/sample_slides/thumb_imac.png"
+                    alt=""></li>
+            <li class="slideButtons"><img
+                    src="https://demo.tutorialzine.com/2009/11/beautiful-apple-gallery-slideshow/img/sample_slides/thumb_about.png"
+                    alt=""></li>
+        </ul>
+    </div>
+</body>
+<script>
+    let slideButtons = document.getElementsByClassName('slideButtons')
+    for (let i = 0; i < slideButtons.length; i++) {
+        slideButtons[i].addEventListener('click', function (e) {
+            let index = $(e.currentTarget).index()
+            let px = index * -900
+            $('#images').css({
+                transform: 'translate(' +
+                    px + 'px)'
+            })
+        })
+    }
+</script>
+
+</html>
